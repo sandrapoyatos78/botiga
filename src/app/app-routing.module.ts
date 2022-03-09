@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'create-ropa',
+    loadChildren: () => import('./pages/create-ropa/create-ropa.module').then( m => m.CreateRopaPageModule)
+  },
+  {
+    path: 'list-ropa',
+    loadChildren: () => import('./pages/list-ropa/list-ropa.module').then( m => m.ListRopaPageModule)
+  },
+  {
+    path: 'edit-ropa',
+    loadChildren: () => import('./pages/edit-ropa/edit-ropa.module').then( m => m.EditRopaPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>listRopa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Articulos
+    </ion-list-header>
+    <ion-item *ngFor="let ropa of ropas">
+      <ion-label>
+        <h5>
+          <ion-icon name="ropa"></ion-icon> {{ropa.tipo}}
+        </h5>
+        <p>
+          {{ropa.precio}}
+        </p>
+      </ion-label>
+      <ion-button clear [routerLink]="['/edit-ropa/', ropa.id]">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+      <ion-button clear (click)="deleteRopa(ropa.id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+  </ion-item>
+</ion-list>
+
+</ion-content>
