@@ -13,21 +13,25 @@ export class EditRopaPage implements OnInit {
   editForm: FormGroup;
   id: String;
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute,
-    private router: Router, public formBuilder: FormBuilder) {
+      private router: Router, public formBuilder: FormBuilder) {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.dataService.filtra(this.id).subscribe(
       res => {
         this.editForm = this.formBuilder.group({
+          id: [res['id']],
           tipo: [res['tipo']],
-          precio: [res['precio']]
+          precio: [res['precio']],
+          intercambio: [res['']]
         })
       });
   }
 
   ngOnInit() {
     this.editForm = this.formBuilder.group({
+      id: [''],
       tipo: [''],
-      precio: ['']
+      precio: [''], 
+      intercambio: ['']
     })
   }
  

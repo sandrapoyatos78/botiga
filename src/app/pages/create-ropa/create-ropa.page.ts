@@ -18,6 +18,7 @@ export class CreateRopaPage implements OnInit {
  
   ngOnInit() {
     this.ropaForm = this.formBuilder.group({
+      id: [''],
       tipo: [''],
       precio: [''], 
       intercambio: [false]
