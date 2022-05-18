@@ -12,10 +12,15 @@ export class LoginPage implements OnInit {
 
   constructor(private router: Router, public authService: AuthenticationService, public formBuilder: FormBuilder){ }
 
+
   logIn(email, password) {
-    this.authService.signIn(email.value, password.value)
+    this.authService.signIn(email, password)
       .then((res) => {
-        this.router.navigateByUrl('/tabs');
+        if (email == 'san@admin.com') {
+          this.router.navigateByUrl('/tabs');
+        } else {
+          this.router.navigateByUrl('/login');
+        }
       }).catch((error) => {
         window.alert(error.message)
       })
@@ -27,9 +32,8 @@ export class LoginPage implements OnInit {
  ngOnInit() {
 
   this.ionicForm = this.formBuilder.group({
-    name: ['', [Validators.required, Validators.minLength(8)]],
     email: ['', [Validators.pattern('[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})')]],
-    contraseña: ['', [Validators.required, Validators.minLength(8)]]
+    pass: ['', [Validators.required, Validators.minLength(8)]]
    })
  }
 
@@ -38,12 +42,16 @@ export class LoginPage implements OnInit {
   if (!this.ionicForm.valid) {
     console.log('You have errors in your data')
   } else {
-    console.log(this.ionicForm.value)
+    this.logIn(this.ionicForm.value.email, this.ionicForm.value.pass)
   }
 }
  get errors(){
   return this.ionicForm.controls;
 }
+goToSignup() {
+  this.router.navigateByUrl('register');
+}
+
 }
 
 

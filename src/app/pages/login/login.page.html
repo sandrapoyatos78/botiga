@@ -6,23 +6,23 @@
 
 <form [formGroup]="ionicForm" (ngSubmit)="submitForm()">
   <ion-list>
+    
     <ion-item>
-      <ion-label position="floating" *ngIf="submitted && errors.name.errors?.required">Name</ion-label>
-      <ion-input placeholder="Usuario" formControlName="name" type="text" required></ion-input>
+      <ion-label position="floating" >Email</ion-label>
+      <p  *ngIf="submitted && errors.name.errors?.minlength"></p>
+      <ion-input placeholder="Email" formControlName="email" type="email" value ="email" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating"  *ngIf="submitted && errors.name.errors?.minlength">Email</ion-label>
-      <ion-input placeholder="Email"formControlName="email" type="email" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating"  *ngIf="submitted && errors.name.errors?.minlength">Contraseña</ion-label>
-      <ion-input placeholder="Contraseña" formControlName="contraseña" type="password" required></ion-input>
+      <ion-label position="floating" >Contraseña</ion-label>
+      <p  *ngIf="submitted && errors.name.errors?.minlength"></p>
+      <ion-input placeholder="Contraseña" formControlName="pass" type="password" required></ion-input>
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="danger" expand="block" (click)="registerUser()">LOGIN</ion-button>
+        <ion-button type="submit" color="danger" expand="block" (click)="logIn(email, password)">LOGIN</ion-button>
       </ion-col>
     </ion-row>
   </ion-list>
   </form>
+  <p class="ion-text-center">¿Aún no estas registrado? <a (click)="goToSignup()">Registrate</a></p>
 </ion-content>

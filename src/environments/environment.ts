@@ -11,9 +11,13 @@ export const environment = {
     projectId: "botiga-12e64",
     storageBucket: "botiga-12e64.appspot.com",
     messagingSenderId: "747952070160",
-    appId: "1:747952070160:web:d4fc968a12e02c1b853495"
-  }
+    appId: "1:747952070160:web:d4fc968a12e02c1b853495", 
+
+  },
+  mapBoxToken: 'pk.eyJ1Ijoic2FuZHJ1cyIsImEiOiJjbDMzNHd1aWUwaG81M2twNXV5c2hsamVpIn0.VPOvdb_vwfQ7muyA2zGORA'
+
 };
+
 
 
 /*

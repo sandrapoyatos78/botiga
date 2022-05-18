@@ -8,27 +8,41 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./list-ropa.page.scss'],
 })
 export class ListRopaPage implements OnInit {
+  ropa = {
+    id: "",
+    tipo: "",
+    precio: "",
+    intercambio: [false], 
+    imagePost:""
+  }
 
-  ropas = [];
+ropas = [];
+
  constructor(private dataService: DataService) { }
  
  ngOnInit() {
-   this.dataService.lista().subscribe(
-     res => {
-       this.ropas = res.map((item) => {
-         return {
-           id: item.payload.doc.id,
-           ... item.payload.doc.data() as Ropa
-         };
-       })
-     }
-   );
- }
+  this.dataService.getAllropa('Productos').then(firebaseResponse => {
+    firebaseResponse.subscribe(ropasRef => {
 
- deleteBook(id){
+      this.ropas = ropasRef.map(ropaRef => {
+        let ropa = ropaRef.payload.doc.data();
+        ropa['id'] = ropaRef.payload.doc.id;
+        return ropa;
+      })
+      console.log(this.ropas);
+
+    })
+  })
+}
+
+ eliminar(id) {
   if (window.confirm('Do you want to delete this article?')) {
-    this.dataService.elimina(id)
-  }
+  this.dataService.delete('Productos', id).then(res => {
+    alert("Se ha eliminado correctamente ");
+  }).catch(err => {
+    console.log("ERROR al eliminar ", err);
+  });
+}
 }
 
 

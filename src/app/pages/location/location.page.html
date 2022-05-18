@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/listclient"></ion-back-button>
+    </ion-buttons>
+    <ion-title>¿DONDE ESTÁS?</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="map" style="width: 300px;height: 300px;">
+ 
+  </div>
+
+  <ion-button  type="submit" expand="block" color="success" (click)="goTolist()">Guardar</ion-button>
+ 
+ </ion-content>

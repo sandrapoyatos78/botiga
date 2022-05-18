@@ -2,7 +2,14 @@ export interface Ropa {
     id: string;
     tipo: string;
     precio: string;
-    intercambio: [false]
+    intercambio: [false], 
+    imagePost:any
+ }
+ export interface FileI {
+   name: string;
+   imageFile: File;
+   size: string;
+   type: string;
  }
 
 
@@ -15,8 +22,9 @@ export interface Ropa {
  }
  
  export interface User {
-   uid: string;
    email: string;
-   displayName: string;
+   password:string;
+  
+   
  }
  

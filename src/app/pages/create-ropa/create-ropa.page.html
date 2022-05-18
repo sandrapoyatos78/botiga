@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>createRopa</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/listclient"></ion-back-button>
+    </ion-buttons>
+    <ion-title>CREA TU ARTICULO</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,7 +28,30 @@
       <ion-input formControlName="intercambio" type="text" required>
       </ion-input>
     </ion-item>
-    <ion-button type="submit" expand="block" color="success"> Crear articulo</ion-button>
+ 
+    <ion-button type="submit" expand="block" color="success" > Crear articulo</ion-button>
   </form>
+<!--SUBE FOTO  -->
 
+  <form [formGroup]="newPostForm" (ngSubmit)="addNewPost(newPostForm)">
+ <h4>¿Quieres subir una foto?</h4>
+<ion-item>
+    <ion-label>
+        Foto
+    </ion-label>
+    <ion-buttons slot="end">
+      <ion-button>
+         <label for="file-upload">
+           <ion-icon slot="icon-only" name="images"></ion-icon>
+         </label>
+          <input (change)="handleImage($event)" id="file-upload" style="display: none" type="file"  accept="image/*" >
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+  <ion-button type="submit" expand="block" color="success">Subir Foto</ion-button>
+</form>
+
+<!--ENVIAR EMAIL -->
+<h5>¿Quieres recibir un email de confirmación?</h5>
+<ion-button type="submit" expand="block" color="success" (click)="sendEmail()">Enviar Email</ion-button>
 </ion-content>

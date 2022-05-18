@@ -12,7 +12,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HttpClientModule } from '@angular/common/http';
-
+import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AngularFireDatabaseModule],
  
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, 
+   }, EmailComposer],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

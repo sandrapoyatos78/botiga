@@ -1,9 +1,21 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
 </ion-header>
-
 <ion-content>
 
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="usuario.email" #email required></ion-input>
+    </ion-item> 
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password"  [(ngModel)]="usuario.password" #password required></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col> 
+      <ion-button type="submit" color="danger"  (click)="altaUser()" expand="block">Registrate</ion-button>
+      </ion-col>
+    </ion-row>
+
+  <p class="ion-text-center">¿Ya estas registrado? <a (click)="goToLogin()">Login</a></p>
 </ion-content>

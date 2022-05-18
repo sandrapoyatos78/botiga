@@ -6,11 +6,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
-  },
+
   {
     path: 'create-ropa',
     loadChildren: () => import('./pages/create-ropa/create-ropa.module').then( m => m.CreateRopaPageModule)
@@ -18,10 +14,6 @@ const routes: Routes = [
   {
     path: 'list-ropa',
     loadChildren: () => import('./pages/list-ropa/list-ropa.module').then( m => m.ListRopaPageModule)
-  },
-  {
-    path: 'edit-ropa',
-    loadChildren: () => import('./pages/edit-ropa/edit-ropa.module').then( m => m.EditRopaPageModule)
   },
   {
     path: 'login',
@@ -35,6 +27,26 @@ const routes: Routes = [
     path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule),
     canLoad: [AuthGuard]
+  },
+  {
+    path: 'edit-ropa-ok/:id',
+    loadChildren: () => import('./pages/edit-ropa-ok/edit-ropa-ok.module').then( m => m.EditRopaOKPageModule)
+  },
+  {
+    path: 'listclient',
+    loadChildren: () => import('./pages/listclient/listclient.module').then( m => m.ListclientPageModule)
+  },
+  {
+    path: 'createclient',
+    loadChildren: () => import('./pages/createclient/createclient.module').then( m => m.CreateclientPageModule)
+  },
+  {
+    path: 'location',
+    loadChildren: () => import('./pages/location/location.module').then( m => m.LocationPageModule)
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
   },
 ];
 

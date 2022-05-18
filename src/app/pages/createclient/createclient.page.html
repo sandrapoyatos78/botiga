@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/listclient"></ion-back-button>
+    </ion-buttons>
+    <ion-title>NUEVO CLIENTE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-input type="nombre" placeholder="Nombre" [(ngModel)]="usuario.nombre"></ion-input>
+  <ion-input type="email" placeholder="Email" [(ngModel)]="usuario.email"></ion-input>
+  <ion-input type="password" placeholder="Contraseña" [(ngModel)]="usuario.password"></ion-input>
+  
+  <ion-item>
+    <ion-input type="location" placeholder="Localización" position="floating"></ion-input>
+    <ion-buttons slot="end">
+      <ion-icon routerLink="/location" slot="icon-only" name="location-outline"></ion-icon>
+    </ion-buttons>
+  </ion-item>
+  
+  <ion-button  type="submit" expand="block" color="success" (click)="altaUser()">Crear Cliente</ion-button>
+
+</ion-content>

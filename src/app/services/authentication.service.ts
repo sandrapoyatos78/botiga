@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
@@ -11,7 +11,9 @@ export class AuthenticationService {
   userData: any;
 
   constructor(public afStore: AngularFirestore,
-    public ngFireAuth: AngularFireAuth, public router: Router) {
+    public ngFireAuth: AngularFireAuth, 
+    public router: Router, 
+    public ngZone: NgZone) {
       this.ngFireAuth.authState.subscribe(user => {
         if (user) {
           this.userData = user;
@@ -22,16 +24,15 @@ export class AuthenticationService {
       })
     }
     signIn(email, password) {
-      return this.ngFireAuth.signInWithEmailAndPassword(email, password)
+      return this.ngFireAuth.signInWithEmailAndPassword(email, password);
     }
 
-    registerUser(userName, email, password) {
+    registerUser(email, password) {
       return this.ngFireAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
         const userData: User = {
-          uid: password,
           email: email,
-          displayName: userName}
+          password: password}
         this.setUserData(userData);
       });
     }
@@ -39,9 +40,8 @@ export class AuthenticationService {
     setUserData(user) {
       const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/${user.uid}`);
       const userData: User = {
-        uid: user.uid,
         email: user.email,
-        displayName: user.displayName
+        password: user.pass
       }
       return userRef.set(userData)
     }

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
-  selector: 'app-edit-ropa',
-  templateUrl: './edit-ropa.page.html',
-  styleUrls: ['./edit-ropa.page.scss'],
+  selector: 'app-edit-ropa-ok',
+  templateUrl: './edit-ropa-ok.page.html',
+  styleUrls: ['./edit-ropa-ok.page.scss'],
 })
-export class EditRopaPage implements OnInit {
+export class EditRopaOKPage implements OnInit {
 
   editForm: FormGroup;
   id: String;
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute,
-      private router: Router, public formBuilder: FormBuilder) {
+       public formBuilder: FormBuilder) {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.dataService.filtra(this.id).subscribe(
       res => {

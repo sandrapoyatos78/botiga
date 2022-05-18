@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EditRopaPageRoutingModule } from './edit-ropa-routing.module';
+import { EditRopaOKPageRoutingModule } from './edit-ropa-ok-routing.module';
 
-import { EditRopaPage } from './edit-ropa.page';
+import { EditRopaOKPage } from './edit-ropa-ok.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EditRopaPageRoutingModule, 
+    EditRopaOKPageRoutingModule, 
     ReactiveFormsModule
   ],
-  declarations: [EditRopaPage]
+  declarations: [EditRopaOKPage]
 })
-export class EditRopaPageModule {}
+export class EditRopaOKPageModule {}
